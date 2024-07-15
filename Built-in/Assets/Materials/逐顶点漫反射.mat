@@ -91,7 +91,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.6981132, g: 0.07573871, b: 0.32134396, a: 1}
-    - _Diffuse: {r: 0.4716981, g: 0.30927375, b: 0.30927375, a: 1}
+    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Vector: {r: 1, g: 2, b: 3, a: 4}
   m_BuildTextureStacks: []

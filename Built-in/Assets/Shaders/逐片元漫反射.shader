@@ -35,11 +35,11 @@ Shader "Shader diffuse fragment"{
 				Tags{"LightMode" = "ForwardBase"}
 				CGPROGRAM
 	#include "Lighting.cginc"//取得第一个直射光的颜色 _LightColor0 直射光位置_WorldSpaceLightPos0
-		// Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members temp)
-		//#pragma exclude_renderers d3d11
-					//声明顶点函数,函数名vert
+		
+		
+//声明顶点函数,函数名vert
 		#pragma vertex vert
-				//声明片元函数,函数名frag
+//声明片元函数,函数名frag
 		#pragma fragment frag
 
 		float3 _Diffuse;
@@ -52,7 +52,8 @@ Shader "Shader diffuse fragment"{
 
 		struct v2f {
 			float4 position:SV_POSITION;
-			float3 color:COLOR0;//COLOR0中间语义，用户自己定义，存储颜色
+			float3 worldNormalDir:COLOR0;//COLOR0中间语义，用户自己定义，存储颜色
+		
 		};
 
 		//POSITION model点坐标，SV_POSITION处理后的坐标
@@ -60,20 +61,21 @@ Shader "Shader diffuse fragment"{
 		v2f vert(a2v v){
 			v2f f;
 			f.position = UnityObjectToClipPos(v.vertex);
-			
-			fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.rgb;
-
-			fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);//阳光方向
-			fixed3 normalDir = normalize(mul(v.normal, (float3x3)unity_WorldToObject));//法线 从模型空间转世界空间
-
-			float3 diffuse = _LightColor0.rgb * max(dot(lightDir, normalDir), 0) * _Diffuse.rgb;
-			f.color = diffuse + ambient;
+			f.worldNormalDir = mul(v.normal, (float3x3)unity_WorldToObject);
 			return f;
 		}
 
 		fixed4 frag(v2f f) : SV_Target
 		{
-			return fixed4(f.color,1);
+			fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.rgb;
+
+			fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);//阳光方向
+			fixed3 normalDir = normalize(f.worldNormalDir);//法线 从模型空间转世界空间
+
+			float3 diffuse = _LightColor0.rgb * max(dot(lightDir, normalDir), 0) * _Diffuse.rgb;
+			fixed3 temp  = diffuse + ambient;
+
+			return fixed4(temp.rgb,1);
 		}
 
 
