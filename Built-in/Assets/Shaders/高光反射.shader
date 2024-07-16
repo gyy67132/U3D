@@ -1,5 +1,7 @@
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 //从应用程序传到顶点函数的语义
@@ -28,6 +30,8 @@ Shader "Shader specular fragment"{
 
 	Properties{
 		_Diffuse("Diffuse Color", Color) = (1,1,1,1)
+		_Gloss("Gloss", Range(8,200))=10
+		_Specular("Specular Color", Color)=(1,1,1,1)
 	}
 
 		SubShader{
@@ -43,6 +47,8 @@ Shader "Shader specular fragment"{
 		#pragma fragment frag
 
 		float3 _Diffuse;
+		half _Gloss;
+		fixed4 _Specular;
 
 		struct a2v {
 			float4 vertex:POSITION;
@@ -53,7 +59,7 @@ Shader "Shader specular fragment"{
 		struct v2f {
 			float4 position:SV_POSITION;
 			float3 worldNormalDir:COLOR0;//COLOR0中间语义，用户自己定义，存储颜色
-			float4 worldVertex:POSITION;
+			float3 eyeDir:COLOR1;
 		};
 
 		//POSITION model点坐标，SV_POSITION处理后的坐标
@@ -62,6 +68,7 @@ Shader "Shader specular fragment"{
 			v2f f;
 			f.position = UnityObjectToClipPos(v.vertex);
 			f.worldNormalDir = mul(v.normal, (float3x3)unity_WorldToObject);
+			f.eyeDir = (_WorldSpaceCameraPos.xyz - mul(v.vertex, unity_WorldToObject).xyz);
 			return f;
 		}
 
@@ -76,10 +83,10 @@ Shader "Shader specular fragment"{
 			float3 diffuse = _LightColor0.rgb * halfLabert  * _Diffuse.rgb;
 
 			fixed3 reflectDir = normalize(reflect(-lightDir, normalDir));
-			_WorldSpaceCameraPos.xyz - mul()
-			fixed3 specular =  _LightColor0.rgb * pow(max(cos()), 10)
+			fixed3 eyeDir = normalize(f.eyeDir);
+			fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(dot(reflectDir, eyeDir), 0), _Gloss);
 
-			fixed3 temp  = diffuse + ambient;
+			fixed3 temp  = diffuse + ambient + specular;
 
 			return fixed4(temp.rgb, 1);
 		}
