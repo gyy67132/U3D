@@ -249,7 +249,10 @@ GameObject:
   - component: {fileID: 961739752}
   - component: {fileID: 961739751}
   - component: {fileID: 961739750}
+<<<<<<< HEAD
   - component: {fileID: 961739754}
+=======
+>>>>>>> 491dfbba1135114571d755eed73600155746b349
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -356,6 +359,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &961739754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstGameObj: {fileID: 0}
+=======
+>>>>>>> 491dfbba1135114571d755eed73600155746b349
 --- !u!1 &1160234425
 GameObject:
   m_ObjectHideFlags: 0
