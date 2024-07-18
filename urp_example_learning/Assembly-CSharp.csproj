@@ -58,12 +58,16 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CSharp-碰撞\碰撞脚本.cs" />
+    <Compile Include="Assets\CSharp\Scripts\Hello Unity.cs" />
+    <Compile Include="Assets\CSharp\Scripts\第二个脚本.cs" />
     <Compile Include="Assets\CSharp\Scripts\第一个脚本.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\CSharp\Scripts\第二个脚本.cs" />
-    <Compile Include="Assets\CSharp\Scripts\Hello Unity.cs" />
-    <Compile Include="Assets\CSharp-碰撞\碰撞脚本.cs" />
+    <Compile Include="Assets\调色板\ColorPick.cs" />
     <Compile Include="Assets\CSharp-碰撞\场景2脚本.cs" />
+    <Compile Include="Assets\调色板\ColorPickClick.cs" />
+    <Compile Include="Assets\调色板\调色板.cs" />
+    <Compile Include="Assets\调色板\点击事件.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
