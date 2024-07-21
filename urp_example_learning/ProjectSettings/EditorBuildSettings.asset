@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/URP\u4F8B\u5B50/Scenes/SampleScene.unity"
+    path: "Assets/URP\u4F8B\u5B50/SampleScene.unity"
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: "Assets/C#\u57FA\u7840\u8272\u6761/Standard.unity"

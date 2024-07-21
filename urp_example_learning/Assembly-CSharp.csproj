@@ -70,6 +70,7 @@
     <Compile Include="Assets\C#基础色条\场景2脚本.cs" />
     <Compile Include="Assets\UI\方块旋转.cs" />
     <Compile Include="Assets\C#基础色条\调色板\ColorPickClick.cs" />
+    <Compile Include="Assets\URP例子\Scripts\相机.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\杂项\TextMesh Pro\Shaders\TMPro.cginc" />
