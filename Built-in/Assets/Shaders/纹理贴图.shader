@@ -7,7 +7,7 @@ Shader "纹理贴图"{
 		_Diffuse("Diffuse Color", Color) = (1,1,1,1)
 		_Specular("Specular Color", Color) = (1,1,1,1)
 		_Gloss("Gloss", Range(10,200)) = 20
-		_Texture("Main Tex", 2D) = "white{}"
+		_Texture("Main Tex", 2D) = "white"{}
 	}
 
 		SubShader{
@@ -22,7 +22,7 @@ Shader "纹理贴图"{
 				fixed4 _Specular;
 				half _Gloss;
 				sampler2D _Texture;
-
+				float4 _Texture_ST;//名字固定
 				struct a2v {
 					float4 vertex:POSITION;
 					float3 normal:NORMAL;
@@ -33,7 +33,7 @@ Shader "纹理贴图"{
 					float4 svPos:SV_POSITION;
 					float3 worldNormal : TEXCOORD0;
 					float4 worldVertex : TEXCOORD1;
-					float4 uv:TEXCOORD2;
+					float2 uv:TEXCOORD2;
 				};
 
 				v2f vert(a2v v)
@@ -42,7 +42,7 @@ Shader "纹理贴图"{
 					f.svPos = UnityObjectToClipPos(v.vertex);//模型坐标转剪裁空间坐标
 					f.worldNormal = UnityObjectToWorldNormal(v.normal);
 					f.worldVertex = mul(v.vertex, unity_WorldToObject);//模型坐标转世界空间坐标
-					f.uv = v.texCoord;
+					f.uv = v.texCoord.xy * _Texture_ST.xy + _Texture_ST.zw;
 					return f;
 				}
 
@@ -62,7 +62,7 @@ Shader "纹理贴图"{
 					//高光反射
 					fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(dot(normalDir, halfDir),0), _Gloss);
 
-					fixed3 texColor = tex2D(_Texture, f.uv.xy);
+					fixed3 texColor = tex2D(_Texture, f.uv);
 					fixed3 retColor = (diffuse + specular + UNITY_LIGHTMODEL_AMBIENT.rgb)* texColor;
 
 					return fixed4(retColor, 1.0);
