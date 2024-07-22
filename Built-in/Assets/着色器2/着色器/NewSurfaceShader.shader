@@ -9,15 +9,16 @@ Shader "Custom/NewSurfaceShader"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque" }//不透明渲染
         LOD 200
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows
-
+        //surface 关键字 surf函数 Standard 标准光照模型 fullforwardshadows完整的前向渲染模型
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
+        //3.0的版本
 
         sampler2D _MainTex;
 
@@ -37,6 +38,8 @@ Shader "Custom/NewSurfaceShader"
             // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
 
+        //输入 Input IN
+        //输出 inout SurfaceOutputStandard o
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             // Albedo comes from a texture tinted by color
