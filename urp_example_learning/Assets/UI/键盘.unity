@@ -6220,6 +6220,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 107278660062803612, guid: e982d247857fb064690da4163f50cf14,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 107278660062803613, guid: e982d247857fb064690da4163f50cf14,
         type: 3}
       propertyPath: m_AnchorMax.y
