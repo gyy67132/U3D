@@ -17,3 +17,10 @@ Built-in/Library
 Built-in/Temp
 Built-in/Logs
 Built-in/Packages
+
+XR/Library
+XR/Temp
+XR/Logs
+XR/Packages
+XR/obj
+XR/.vs
