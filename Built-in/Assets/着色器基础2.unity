@@ -133,6 +133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bunny
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2b7aff1772ae94cbc9532914d7685437, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b7aff1772ae94cbc9532914d7685437, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -201,7 +205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &253699959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -639,7 +643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &2095294324
 MeshCollider:
   m_ObjectHideFlags: 0
