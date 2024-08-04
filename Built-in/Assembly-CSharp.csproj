@@ -59,12 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\2-着色器2\贴合地面材质.cs" />
+    <Compile Include="Assets\5-顶点函数\Scripts\法线压缩.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\2-着色器2\着色器\法线贴图.shader" />
     <None Include="Assets\3-光照模型\Shaders\各向异性.shader" />
     <None Include="Assets\2-着色器2\着色器\贴合地面圆环.shader" />
     <None Include="Assets\1-着色器-基础\Shaders\透明.shader" />
+    <None Include="Assets\5-顶点函数\Shaders\法线挤压.shader" />
     <None Include="Assets\3-光照模型\Shaders\冯式反射.shader" />
     <None Include="Assets\1-着色器-基础\Shaders\逐顶点漫反射.shader" />
     <None Include="Assets\1-着色器-基础\Shaders\凹凸贴图.shader" />
@@ -73,17 +75,19 @@
     <None Include="Assets\1-着色器-基础\Shaders\高光反射.shader" />
     <None Include="Assets\1-着色器-基础\Shaders\未做任何.shader" />
     <None Include="Assets\2-着色器2\着色器\全息投影.shader" />
+    <None Include="Assets\5-顶点函数\Shaders\雪景.shader" />
     <None Include="Assets\4-PBR\Nebula Animations\Shaders\Showcase Room.shader" />
+    <None Include="Assets\5-顶点函数\Shaders\爆炸.shader" />
     <None Include="Assets\2-着色器2\着色器\压缩融合.shader" />
     <None Include="Assets\5-顶点函数\Shaders\顶点颜色.shader" />
     <None Include="Assets\2-着色器2\着色器\滚动纹理.shader" />
     <None Include="Assets\3-光照模型\Shaders\卡通.shader" />
     <None Include="Assets\1-着色器-基础\Shaders\逐片元漫反射.shader" />
     <None Include="Assets\1-着色器-基础\Shaders\纹理贴图.shader" />
-    <None Include="Assets\5-顶点函数\Shaders\顶点颜色.shader.txt" />
     <None Include="Assets\1-着色器-基础\Shaders\逐片元漫反射2.shader" />
     <None Include="Assets\1-着色器-基础\Shaders\法线着色器.shader" />
     <None Include="Assets\2-着色器2\着色器\纯漫反射.shader" />
+    <None Include="Assets\5-顶点函数\Shaders\顶点动画.shader" />
     <None Include="Assets\2-着色器2\着色器\透明材质.shader" />
     <None Include="Assets\2-着色器2\着色器\纹理贴图.shader" />
   </ItemGroup>
@@ -920,6 +924,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
       <Private>False</Private>
@@ -956,8 +964,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">
@@ -972,6 +980,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
@@ -982,14 +994,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

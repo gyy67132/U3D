@@ -509,8 +509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 8ffbac4556f71e943ac5b045d2d8a2b7, type: 2}
-  radius: 0
-  color: {r: 1, g: 1, b: 1, a: 1}
+  Radius: 1
+  Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!136 &915516156
 CapsuleCollider:
   m_ObjectHideFlags: 0

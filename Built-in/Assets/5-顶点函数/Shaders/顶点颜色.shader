@@ -35,7 +35,7 @@ Shader "着色器5/顶点颜色"
 
         void vert(inout appdata_full v, out Input o)
         {
-            o.vertColor = UnityObjectToClipPos(v.vertex);
+            o.vertColor = (v.color);
         }
         void surf (Input IN, inout SurfaceOutput o)
         {
