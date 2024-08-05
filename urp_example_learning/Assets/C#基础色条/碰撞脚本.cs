@@ -15,9 +15,9 @@ public class 碰撞脚本 : MonoBehaviour
     void Update()
     {
         //print("Update" + Time.deltaTime);   
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            print("Space down");
+            Debug.Log("Space down");
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -35,6 +35,7 @@ public class 碰撞脚本 : MonoBehaviour
         {
             SceneManager.LoadScene("SampleScene");//必须要在build settings中添加过的
         }
+        
     }
 
     void FixedUpdate()

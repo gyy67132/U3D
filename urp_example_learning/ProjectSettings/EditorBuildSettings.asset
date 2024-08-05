@@ -12,6 +12,8 @@ EditorBuildSettings:
     path: "Assets/C#\u57FA\u7840\u8272\u6761/Standard.unity"
     guid: d3cc554897e4c8849803f6de898ac994
   m_configObjects:
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: e15d2d972617bde4f9e5a5853151f226,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 99dfc67863d672847a6788c486c38bff,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 189577747c355d641bf75dc4140d724b,
