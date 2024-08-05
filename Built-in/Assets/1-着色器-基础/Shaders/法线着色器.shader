@@ -51,11 +51,15 @@ Shader "shader normal"{
 
 		fixed4 frag(v2f f) : SV_Target
 		{
-			return fixed4(f.temp,1);
+			//float3 t = float3(1,1,1);
+			//t += f.temp;
+			//return fixed4(t/2,1);
+			//f.temp = float3(1, 0, -1);
+			return fixed4(f.temp, 1);
 		}
 
 
-			ENDCG
+		ENDCG
 		}
 	}
 	Fallback "VertexLit"

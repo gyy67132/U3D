@@ -6,15 +6,21 @@ Shader "透明"{
 	Properties{
 		_Diffuse("Diffuse Color", Color) = (1,1,1,1)
 		_Specular("Specular Color", Color) = (1,1,1,1)
-		_Gloss("Gloss", Range(10,200)) = 20
+		_Gloss("Gloss", Range(5,200)) = 20
 		_Texture("Main Tex", 2D) = "white"{}
 		_NMTexture("Normal Tex", 2D) = "bump"{}
 		_BumpScale("Bump Scale", Float) = 1
-		_AlphaScale("Aipha Scale", Float) = 1
+		_AlphaScale("Aipha Scale", Range(0,1)) = 0.7
 	}
 
 		SubShader{
-			Tags{"Queue"="Transparent" "IngnoreProjector"="True" "RenderType"="Transparent"}
+			//"Queue" = "Transparent" 表明加入透明物体渲染队列
+			// "IngnoreProjector"="True" 表明该物体不受其他物体投影影响 
+			//Unity的投影仪组件允许开发者将纹理或光影投射到场景中的物体上，以创造各种视觉效果，
+			//如阴影、光斑、纹理映射等。然而，在某些情况下，开发者可能不希望某些物体被投影仪所影响，
+			//这时就可以通过设置Shader的"IgnoreProjector"标签为"True"来实现。
+
+			Tags{"Queue" = "Transparent" "IngnoreProjector"="True" "RenderType"="Transparent"}
 			Pass{
 				Tags{"LightMode" = "ForwardBase"}
 
@@ -48,7 +54,7 @@ Shader "透明"{
 
 				struct v2f {
 					float4 svPos:SV_POSITION;
-					//float3 worldNormal : TEXCOORD0;
+					//float3 worldNormal : TEXCOORD3;
 					float3 lightDir : TEXCOORD0;
 					float4 worldVertex : TEXCOORD1;
 					float4 uv:TEXCOORD2;
@@ -88,13 +94,12 @@ Shader "透明"{
 
 					//相机方向（人眼方向）
 					//fixed3 viewDir = normalize(UnityWorldSpaceViewDir(f.worldVertex));
-
 					//fixed3 halfDir = normalize(lightDir + viewDir);
 					//高光反射
-					//fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(dot(normalDir, halfDir),0), _Gloss);
+					//fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(dot(tangentNormal, halfDir),0), _Gloss);
 
 					fixed3 texColor = tex2D(_Texture, f.uv);
-					fixed3 retColor = (diffuse  + UNITY_LIGHTMODEL_AMBIENT.rgb)* texColor;
+					fixed3 retColor = (diffuse  + UNITY_LIGHTMODEL_AMBIENT.rgb )* texColor;
 
 					return fixed4(retColor, _AlphaScale);
 				}

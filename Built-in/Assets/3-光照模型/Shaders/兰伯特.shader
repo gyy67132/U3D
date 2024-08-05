@@ -31,7 +31,7 @@ Shader "着色器3/兰伯特"
 
         half4 LightingSimpleLambert(SurfaceOutput s, half3 lightDir, half atten)
         {
-            half NdotL = dot(s.Normal, lightDir);
+            half NdotL =  max(0,dot(s.Normal, lightDir));
             half4 c;
             c.rgb = s.Albedo * _LightColor0.rgb * (NdotL * atten);
             c.a = s.Alpha;

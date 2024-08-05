@@ -36,5 +36,5 @@ Shader "shader do nothing"{
 	}
 	
 	//SubShader 都不能用时
-	Fallback "VertexLit"
+	Fallback "Specular"
 }

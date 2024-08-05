@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class 贴合地面材质 : MonoBehaviour
 {
     public Material mat;

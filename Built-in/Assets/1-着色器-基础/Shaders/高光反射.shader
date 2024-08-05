@@ -4,19 +4,19 @@
 
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-//´ÓÓ¦ÓÃ³ÌĞò´«µ½¶¥µãº¯ÊıµÄÓïÒå
+//ä»åº”ç”¨ç¨‹åºä¼ åˆ°é¡¶ç‚¹å‡½æ•°çš„è¯­ä¹‰
 //POSITION
 //NORMAL
-//TANGENT ÇĞÏß
-//TEXTURE0 TEXTURE1 ~n ÎÆÀí×ø±ê
-//COLOR ¶¥µãÑÕÉ«
+//TANGENT åˆ‡çº¿
+//TEXTURE0 TEXTURE1 ~n çº¹ç†åæ ‡
+//COLOR é¡¶ç‚¹é¢œè‰²
 
-//´Ó¶¥µãº¯Êı´«µİ¸øÆ¬Ôªº¯Êı
+//ä»é¡¶ç‚¹å‡½æ•°ä¼ é€’ç»™ç‰‡å…ƒå‡½æ•°
 //SV_POSITION
-//COLOR0 COLOR1 ²»Ò»¶¨´«µİÑÕÉ« float4
-//TEXCOORD0 TEXCOORD1 ~7 ÎÆÀí×ø±ê
+//COLOR0 COLOR1 ä¸ä¸€å®šä¼ é€’é¢œè‰² float4
+//TEXCOORD0 TEXCOORD1 ~7 çº¹ç†åæ ‡
 
-//Æ¬Ôªº¯Êı´«¸øÏµÍ³
+//ç‰‡å…ƒå‡½æ•°ä¼ ç»™ç³»ç»Ÿ
 //SV_Target
 
 //_WorldSpaceLightPos0
@@ -26,7 +26,7 @@
 //max()
 //dot()
 
-Shader "Shader specular fragment"{
+Shader "ç€è‰²å™¨1/é«˜å…‰åå°„"{
 
 	Properties{
 		_Diffuse("Diffuse Color", Color) = (1,1,1,1)
@@ -38,12 +38,12 @@ Shader "Shader specular fragment"{
 			Pass{
 				Tags{"LightMode" = "ForwardBase"}
 				CGPROGRAM
-	#include "Lighting.cginc"//È¡µÃµÚÒ»¸öÖ±Éä¹âµÄÑÕÉ« _LightColor0 Ö±Éä¹âÎ»ÖÃ_WorldSpaceLightPos0
+	#include "Lighting.cginc"//å–å¾—ç¬¬ä¸€ä¸ªç›´å°„å…‰çš„é¢œè‰² _LightColor0 ç›´å°„å…‰ä½ç½®_WorldSpaceLightPos0
 		
 		
-//ÉùÃ÷¶¥µãº¯Êı,º¯ÊıÃûvert
+//å£°æ˜é¡¶ç‚¹å‡½æ•°,å‡½æ•°åvert
 		#pragma vertex vert
-//ÉùÃ÷Æ¬Ôªº¯Êı,º¯ÊıÃûfrag
+//å£°æ˜ç‰‡å…ƒå‡½æ•°,å‡½æ•°åfrag
 		#pragma fragment frag
 
 		float3 _Diffuse;
@@ -58,11 +58,11 @@ Shader "Shader specular fragment"{
 
 		struct v2f {
 			float4 position:SV_POSITION;
-			float3 worldNormalDir:COLOR0;//COLOR0ÖĞ¼äÓïÒå£¬ÓÃ»§×Ô¼º¶¨Òå£¬´æ´¢ÑÕÉ«
+			float3 worldNormalDir:COLOR0;//COLOR0ä¸­é—´è¯­ä¹‰ï¼Œç”¨æˆ·è‡ªå·±å®šä¹‰ï¼Œå­˜å‚¨é¢œè‰²
 			float3 eyeDir:COLOR1;
 		};
 
-		//POSITION modelµã×ø±ê£¬SV_POSITION´¦ÀíºóµÄ×ø±ê
+		//POSITION modelç‚¹åæ ‡ï¼ŒSV_POSITIONå¤„ç†åçš„åæ ‡
 		//v2f vert(float4 v : POSITION) : SV_POSITION{
 		v2f vert(a2v v){
 			v2f f;
@@ -76,8 +76,8 @@ Shader "Shader specular fragment"{
 		{
 			fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.rgb;
 
-			fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);//Ñô¹â·½Ïò
-			fixed3 normalDir = normalize(f.worldNormalDir);//·¨Ïß ´ÓÄ£ĞÍ¿Õ¼ä×ªÊÀ½ç¿Õ¼ä
+			fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);//é˜³å…‰æ–¹å‘
+			fixed3 normalDir = normalize(f.worldNormalDir);//æ³•çº¿ ä»æ¨¡å‹ç©ºé—´è½¬ä¸–ç•Œç©ºé—´
 
 			float halfLabert =   dot(lightDir, normalDir) * 0.5 + 0.5;
 			float3 diffuse = _LightColor0.rgb * halfLabert  * _Diffuse.rgb;

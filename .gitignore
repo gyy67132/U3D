@@ -7,6 +7,8 @@ urp_example_learning/Library
 urp_example_learning/Temp
 urp_example_learning/Logs
 urp_example_learning/Packages
+urp_example_learning/obj
+urp_example_learning/.vs
 
 展台项目自己写/Library
 展台项目自己写/Temp

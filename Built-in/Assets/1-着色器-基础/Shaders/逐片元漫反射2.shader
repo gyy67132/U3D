@@ -72,9 +72,10 @@ Shader "Shader diffuse fragment2"{
 			fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);//阳光方向
 			fixed3 normalDir = normalize(f.worldNormalDir);//法线 从模型空间转世界空间
 
-			float halfLabert =   dot(lightDir, normalDir) * 0.5 + 0.5;
+			float halfLambert =   dot(lightDir, normalDir) * 0.5 + 0.5;
+			//float halfLambert = max(0, dot(lightDir, normalDir));
 
-			float3 diffuse = _LightColor0.rgb * halfLabert  * _Diffuse.rgb;
+			float3 diffuse = _LightColor0.rgb * halfLambert  * _Diffuse.rgb;
 			fixed3 temp  = diffuse + ambient;
 
 			return fixed4(temp.rgb, 1);

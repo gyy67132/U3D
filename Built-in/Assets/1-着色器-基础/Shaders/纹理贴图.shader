@@ -53,7 +53,9 @@ Shader "纹理贴图"{
 					fixed3 lightDir = normalize(WorldSpaceLightDir(f.worldVertex));
 
 					//漫反射
-					fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * max(dot(normalDir, lightDir), 0);
+					float halfLabert = dot(lightDir, normalDir) * 0.5 + 0.5;
+					float3 diffuse = _LightColor0.rgb * halfLabert * _Diffuse.rgb;
+					//fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * max(dot(normalDir, lightDir), 0);
 
 					//相机方向（人眼方向）
 					fixed3 viewDir = normalize(UnityWorldSpaceViewDir(f.worldVertex));
