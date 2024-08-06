@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class 碰撞脚本 : MonoBehaviour
+public class 按钮鼠标事件 : MonoBehaviour
 {
     // Start is called before the first frame update
+    Vector3 Position;
+
     void Start()
     {
-        
+        Position = this.gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -18,6 +20,7 @@ public class 碰撞脚本 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Space down");
+            this.gameObject.transform.position = Position;
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -45,62 +48,62 @@ public class 碰撞脚本 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name + "Enter");
+        Debug.Log(collision.gameObject.name + "Enter---------------------------------------1");
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        Debug.Log(collision.gameObject.name + "Stay");
+        Debug.Log(collision.gameObject.name + "Stay---------------------------------------2");
     }
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log(collision.gameObject.name + "Exit");
+        Debug.Log(collision.gameObject.name + "Exit---------------------------------------3");
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject.name + "Trigger Enter");
+        Debug.Log(collision.gameObject.name + "Trigger Enter---------------------------------------4");
     }
 
     private void OnTriggerStay(Collider collision)
     {
-        Debug.Log(collision.gameObject.name + "Trigger Stay");
+        Debug.Log(collision.gameObject.name + "Trigger Stay---------------------------------------5");
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        Debug.Log(collision.gameObject.name + "Trigger Exit");
+        Debug.Log(collision.gameObject.name + "Trigger Exit---------------------------------------6");
     }
 
     private void OnMouseDown()
     {
-        print("OnMouseDown");
-        var pos = this.gameObject.transform.position;
-        this.gameObject.transform.position = new Vector3(pos.x, pos.y+0.5f, pos.z);
+        print("OnMouseDown ---------------------------------------7");
+        //var pos = this.gameObject.transform.position;
+        //this.gameObject.transform.position = new Vector3(pos.x, pos.y+0.5f, pos.z);
     }
 
     private void OnMouseEnter()
     {
-        print("OnMouseEnter");
+        print("OnMouseEnter---------------------------------------8");
     }
 
     private void OnMouseDrag()
     {
-        print("OnMouseDrag");
+        //print("OnMouseDrag---------------------------------------9");
     }
 
     private void OnMouseExit()
     {
-        print("OnMouseExit");
+        print("OnMouseExit---------------------------------------10");
     }
 
     private void OnMouseOver()
     {
-        print("OnMouseOver");
+        //print("OnMouseOver---------------------------------------11");
     }
 
     private void OnMouseUp()
     {
-        print("OnMouseUp");
+        print("OnMouseUp---------------------------------------12");
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class 第一个脚本 : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class 第一个脚本 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        firstGameObj.transform.position = new Vector3(firstGameObj.transform.position.x ,
-            firstGameObj.transform.position.y+0.5f , firstGameObj.transform.position.z);
-        print(firstGameObj.transform.position.y);
+        if (firstGameObj != null)
+        {
+            firstGameObj.transform.position = new Vector3(firstGameObj.transform.position.x,
+                firstGameObj.transform.position.y + 0.5f, firstGameObj.transform.position.z);
+            print(firstGameObj.transform.position.y);
+        }
     }
 
     // Update is called once per frame
@@ -33,7 +37,9 @@ public class 第一个脚本 : MonoBehaviour
 
         //firstGameObj.GetComponent<SpriteRenderer>().sprite = firstSprite;
         firstGameObj.SetActive(!firstGameObj.activeSelf);
+        
+        //rum = GameObject.Find("rum");
 
-        rum = GameObject.Find("rum");
+        //bool result = EditorUtility.DisplayDialog("标题", "这是消息内容", "确定", "取消");
     }
 }

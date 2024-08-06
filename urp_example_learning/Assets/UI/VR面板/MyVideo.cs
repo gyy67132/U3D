@@ -13,7 +13,6 @@ public class MyVideo : MonoBehaviour
     private VideoPlayer videoPlayer;
     private RawImage rawImage;
 
-    private int flag = 0;
     // Start is called before the first frame update
     void Start()
     {

@@ -12,6 +12,8 @@ public class 第二个脚本 : MonoBehaviour
     public GameObject secondObj;
 
     public List<GameObject> cloneObjs;
+
+    float offset = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +51,13 @@ public class 第二个脚本 : MonoBehaviour
     }
     public void btnOnClick4()
     {
-        var newPosition = new Vector3(secondObj.transform.position.x, secondObj.transform.position.y+1.0f,
-                        secondObj.transform.position.z);
-        var cloneObj = Instantiate(secondObj, newPosition, secondObj.transform.rotation);
-        cloneObjs.Add(cloneObj);
+        if (secondObj != null)
+        {
+            var newPosition = new Vector3(secondObj.transform.position.x, secondObj.transform.position.y + offset++,
+                            secondObj.transform.position.z);
+            var cloneObj = Instantiate(secondObj, newPosition, secondObj.transform.rotation);
+            cloneObjs.Add(cloneObj);
+        }
     }
     public void btnOnClick5()
     {
