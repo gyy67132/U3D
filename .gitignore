@@ -37,3 +37,12 @@ XR_2/Packages
 XR_2/obj
 XR_2/.vs
 XR_2/Build
+
+Shader/Library
+Shader/Temp
+Shader/Logs
+Shader/Packages
+Shader/obj
+Shader/.vs
+Shader/Build
+Shader/.vsconfig
