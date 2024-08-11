@@ -24,8 +24,8 @@ Shader "自定义7/斜坡着色器"
             float4 _Color;
             sampler2D _RampTex;
             float4 _RampTex_ST;
-            float4 _Gloss;
-            float4 _Specular;
+            float _Gloss;
+            fixed4 _Specular;
 
             struct a2v {
                 float4 vertex:POSITION;
@@ -59,14 +59,14 @@ Shader "自定义7/斜坡着色器"
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
 
                 fixed halfLambert = dot(worldLightDir, worldNormal) * 0.5 + 0.5;
-                fixed3 diffColor = tex2D(_RampTex, fixed2(halfLambert, 0.5)).rgb * _Color.rgb;
+                fixed3 diffColor = tex2D(_RampTex, fixed2(halfLambert, halfLambert)).rgb * _Color.rgb;
                 fixed3 diffuse = _LightColor0.rgb * diffColor;
 
                 fixed3 viewDir = normalize(UnityWorldSpaceViewDir(f.worldPos));
                 fixed3 halfDir = normalize(viewDir + worldLightDir);
                 fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(halfDir, worldNormal)), _Gloss);
 
-                return fixed4(ambient + specular, 1.0);
+                return fixed4(ambient + diffuse + specular, 1.0);
             }
 
             ENDCG
