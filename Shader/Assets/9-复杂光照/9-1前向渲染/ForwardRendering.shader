@@ -1,7 +1,7 @@
-// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "自定义9/ForwardRebdering"
+Shader "自定义9/ForwardRendering"
 {
     Properties
     {
@@ -61,12 +61,12 @@ Shader "自定义9/ForwardRebdering"
                 fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * lambert;
 
                 fixed3 worldView = normalize(_WorldSpaceCameraPos.xyz - i.worldPos.xyz);
-                fixed halfDir = normalize(worldLightDir + worldView);
-                fixed3 specluar = _LightColor0.rgb * _Specular.rgb * pow(max(dot(halfDir, worldNormal), 0), _Gloss);
+                fixed3 halfDir = normalize(worldLightDir + worldView);
+                fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(dot(halfDir, worldNormal), 0), _Gloss);
 
                 fixed atten = 1.0;
 
-                return fixed4(ambient + (diffuse + specluar)* atten, 1);
+                return fixed4(ambient + (diffuse + specular)* atten, 1);
             }
 
             ENDCG
@@ -122,8 +122,8 @@ Shader "自定义9/ForwardRebdering"
 
                 fixed3 worldView = normalize(_WorldSpaceCameraPos.xyz - i.worldPos.xyz);
                 //fixed3 worldView = normalize(_WorldSpaceViewDir(i.worldPos));
-                fixed halfDir = normalize(worldLightDir + worldView);
-                fixed3 specluar = _LightColor0.rgb  * _Specular.rgb * pow(max(dot(halfDir, worldNormal), 0), _Gloss);
+                fixed3 halfDir = normalize(worldLightDir + worldView);
+                fixed3 specular = _LightColor0.rgb  * _Specular.rgb * pow(max(dot(halfDir, worldNormal), 0), _Gloss);
 
                 #ifdef USING_DIRECTIONAL_LIGHT
                     fixed atten = 1.0;
@@ -133,13 +133,12 @@ Shader "自定义9/ForwardRebdering"
                         fixed atten = tex2D(_LightTexture0, dot(lightCoord, lightCoord).rr).UNITY_ATTEN_CHANNEL;
                     #elif defined (SPOT)
                         float4 lightCoord = mul(unity_WorldToLight, float4(i.worldPos, 1));
-                        fixed atten = (lightCoord.z > 0) * tex2D(_LightTexture0, lightCoord.xy / lightCoord.w + 0.5).w 
-                            * tex2D(_LightTextureB0, dot(lightCoord, lightCoord).rr).UNITY_ATTEN_CHANNEL;
+                        fixed atten = (lightCoord.z > 0) * tex2D(_LightTexture0, lightCoord.xy / lightCoord.w + 0.5).w * tex2D(_LightTextureB0, dot(lightCoord, lightCoord).rr).UNITY_ATTEN_CHANNEL;
                     #else
                         fixed atten = 1.0;
                     #endif
                 #endif
-                return fixed4((diffuse + specluar)* atten, 1);
+                return fixed4((diffuse + specular)* atten, 1.0);
             }
                 
             ENDCG
