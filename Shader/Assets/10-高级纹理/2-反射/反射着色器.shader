@@ -1,4 +1,4 @@
-Shader "Custom/NewSurfaceShader"
+Shader "着色器10/Reflection"
 {
     Properties
     {
@@ -10,7 +10,7 @@ Shader "Custom/NewSurfaceShader"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque"  "Queue" = "Geometry"}
         
         Pass{
             Tags {"LightMode"="ForwardBase"}
@@ -26,7 +26,7 @@ Shader "Custom/NewSurfaceShader"
             
             fixed4 _Color;
             fixed4 _ReflectColor;
-            fixed4 _ReflectAmount;
+            fixed _ReflectAmount;
             samplerCUBE _Cubemap;
 
             struct a2v
@@ -58,11 +58,28 @@ Shader "Custom/NewSurfaceShader"
                 return o;
             }
 
-            fixed4 frag()
+            fixed4 frag(v2f i) :SV_Target
+            {
+                fixed3 worldNormal = normalize(i.worldNormal);
+                fixed3 worldLightDir = normalize(UnityWorldSpaceLightDir(i.worldPos));
+                fixed3 worldViewDir = normalize(i.worldViewDir);
 
-        }
+                fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
+
+                fixed3 diffuse = _LightColor0.rgb * _Color.rgb * max(dot(worldNormal, worldLightDir), 0);
+            
+                fixed3 reflection = texCUBE(_Cubemap, i.worldRefl).rgb * _ReflectColor.rgb;
+
+                UNITY_LIGHT_ATTENUATION(atten, i, i.worldPos);
+
+                fixed3 color = ambient + lerp(diffuse , reflection, _ReflectAmount) * atten;
+
+                return fixed4(color, 1.0);
+            }
         
-        ENDCG
+        
+            ENDCG
+        }
     }
-    FallBack "Diffuse"
+    FallBack "Reflective/VertexLit"
 }
