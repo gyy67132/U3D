@@ -53,7 +53,7 @@ Shader "自定义11/ImageSequenceAnimation" {
 			fixed4 frag(v2f i) : SV_Target{
 				float time = floor(_Time.y * _Speed);
 				float row = floor(time / _HorizontalAmount);
-				float column = time - row * _HorizontalAmount;
+				float column = time - row * _VerticalAmount;
 
 				half2 uv = i.uv + half2(column, -row);
 				uv.x /= _HorizontalAmount;
