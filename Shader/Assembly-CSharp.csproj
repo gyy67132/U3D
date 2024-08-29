@@ -67,16 +67,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\8-透明效果\8-1测试\透明度着色器.shader" />
+    <None Include="Assets\11-动画\3-河流\滚动背景着色器.shader" />
     <None Include="Assets\9-复杂光照\9-2阴影\阴影着色器.shader" />
     <None Include="Assets\9-复杂光照\9-3衰减和阴影\衰减阴影着色器.shader" />
     <None Include="Assets\8-透明效果\8-2混合\混合着色器.shader" />
+    <None Include="Assets\11-动画\4-广告牌\广告牌着色器.shader" />
     <None Include="Assets\11-动画\1-纹理动画\图片帧着色器.shader" />
     <None Include="Assets\10-高级纹理\2-反射\反射着色器.shader" />
     <None Include="Assets\10-高级纹理\6-玻璃\玻璃折射着色器.shader" />
     <None Include="Assets\7-基础纹理\7-3斜坡纹理\斜坡着色器.shader" />
     <None Include="Assets\8-透明效果\8-3半透明\半透明着色器 1.shader" />
     <None Include="Assets\10-高级纹理\3-折射\折射着色器.shader" />
-    <None Include="Assets\11-动画\2-滚动背景\滚动背景着色器.shader" />
+    <None Include="Assets\11-动画\2-滚动背景\河流着色器.shader" />
     <None Include="Assets\9-复杂光照\9-4透明物体阴影\透明物体阴影着色器.shader" />
     <None Include="Assets\7-基础纹理\7-4遮罩纹理\遮罩着色器.shader" />
     <None Include="Assets\10-高级纹理\5-镜子\BumpedSpecular.shader" />
