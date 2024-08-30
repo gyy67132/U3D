@@ -17,6 +17,8 @@ Shader "自定义11/Water2" {
 		Pass { 	
 			Tags{"LightMode"="ForwardBase"}
 
+			Cull Off
+
 			CGPROGRAM
 			
 			#pragma vertex vert
