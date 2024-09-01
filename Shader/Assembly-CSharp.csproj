@@ -58,16 +58,21 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\12-屏幕后处理\2-边缘检测\边缘检测脚本.cs" />
+    <Compile Include="Assets\12-屏幕后处理\1-亮度饱和度\饱和度脚本.cs" />
     <Compile Include="Assets\10-高级纹理\7-程序纹理\SetPropertyDrawer.cs" />
     <Compile Include="Assets\10-高级纹理\7-程序纹理\SetPropertyAttribute.cs" />
     <Compile Include="Assets\10-高级纹理\7-程序纹理\SetPropertyExample.cs" />
     <Compile Include="Assets\10-高级纹理\1-天空盒子\RenderCubemapWizard.cs" />
     <Compile Include="Assets\10-高级纹理\7-程序纹理\程序纹理生成.cs" />
     <Compile Include="Assets\10-高级纹理\7-程序纹理\NewBehaviourScript.cs" />
+    <Compile Include="Assets\12-屏幕后处理\1-亮度饱和度\PostEffectsBase.cs" />
+    <Compile Include="Assets\12-屏幕后处理\3-高斯模糊\高斯模糊脚本.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\8-透明效果\8-1测试\透明度着色器.shader" />
     <None Include="Assets\11-动画\2-滚动背景\滚动背景着色器.shader" />
+    <None Include="Assets\12-屏幕后处理\1-亮度饱和度\饱和度着色器.shader" />
     <None Include="Assets\9-复杂光照\9-2阴影\阴影着色器.shader" />
     <None Include="Assets\9-复杂光照\9-3衰减和阴影\衰减阴影着色器.shader" />
     <None Include="Assets\8-透明效果\8-2混合\混合着色器.shader" />
@@ -78,6 +83,7 @@
     <None Include="Assets\11-动画\5-河流阴影\河流阴影着色器.shader" />
     <None Include="Assets\7-基础纹理\7-3斜坡纹理\斜坡着色器.shader" />
     <None Include="Assets\8-透明效果\8-3半透明\半透明着色器 1.shader" />
+    <None Include="Assets\12-屏幕后处理\2-边缘检测\边缘检测着色器.shader" />
     <None Include="Assets\10-高级纹理\3-折射\折射着色器.shader" />
     <None Include="Assets\11-动画\3-河流\河流着色器.shader" />
     <None Include="Assets\9-复杂光照\9-4透明物体阴影\透明物体阴影着色器.shader" />
